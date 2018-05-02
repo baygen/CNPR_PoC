@@ -1,0 +1,17 @@
+{
+  "name": "car-number-plate-recognition",
+  "version": "0.0.1",
+  "description": "Internet Speed test",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "O. Buy",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.3",
+    "lodash": "^4.17.10"
+  }
+}
