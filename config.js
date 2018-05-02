@@ -1,4 +1,4 @@
-export default {
+module.exports = {
   api: {
     port: 8080
   }
