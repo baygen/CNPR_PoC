@@ -23,29 +23,25 @@ app.get('/teststream', (req, res) => {
         console.log('\n')
         identifying = true;
         new Promise((resolve, reject) =>
-          fs.writeFile(path, image, 'base64', (err) => {
-            if (err) return reject(err);
-            resolve()
-          })
-        ).then(() => {
-          console.time('RECOGNITION #' + counter)
-          return identifyPlateFromImage({ pathToImage: path })
-        })
-          .then(result => {
-            if (result.results.length && result.results[0].plate.length > 7) {
+            fs.writeFile(path, image, 'base64', (err) => {
+              if (err) return reject(err);
+              resolve()
+            })
+          ).then(() => identifyPlateFromImage({ pathToImage: path })
+          ).then(result => {
+            if (result.results.length && result.results[0].confidence > 87) {
               console.log('IDENTIFIED NUMBER PLATE')
               console.log(result);
               let html = "<img src='data:image/jpeg;base64," + image + "' height='450' width='800'>" +
                 `<p>${JSON.stringify(result.results[0])}</p>`
               res.send(html)
             }
-            console.timeEnd('RECOGNITION #' + counter)
-            identifying = false;
           })
-          .catch(err => {
+          .catch(console.error)
+          .then(() => {
             identifying = false;
+            counter++;
           })
-          .then(() => counter++)
       }
     }
   });
