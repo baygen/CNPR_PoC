@@ -1,11 +1,11 @@
 const LiveCam = require('livecam'),
-  fs = require("fs");
-alpr = require('./openALPR');
+  fs = require("fs"),
+  { identifyUA } = require('./openALPR');
 
-let previousImage = null;
 let counter = 0;
-var path = null;
-let identified = false;
+var path = __dirname + `/tests/out.jpg`;
+var mockedPath = __dirname + `/tests/ua1.jpg`;
+let identifying = false;
 
 console.errorLog = log => console.error(`Error : ` + log);
 
@@ -26,39 +26,13 @@ const config = {
     framerate: 0,
     grayscale: false,
   },
-  onImage: image => {
-
-    path = __dirname + `/../out.jpg`;
-
-    console.time('Saving to file');
-    fs.writeFile(path, image, 'base64', console.errorLog);
-    console.timeEnd('Saving to file')
-
-    console.log('Writing image number' + counter + '\n\n');
-    // if (!identified) {
-    // console.time('Identifying')
-    // alpr.identifyMocked(
-    //   // path
-    // ).then(output => {
-    //   identified = true;
-    //   console.info(output)
-    //   console.timeEnd('Identifying')
-    //   // fs.unlink(path)
-    // })
-    // .catch(console.error)
-    // }
-    // if (previousImage && previousImage === image) {
-    counter++;
-    // }
-    // previousImage = image;
+  // @arg image in base64 format
+  onImage: (image) => {
+    console.log('onImage default')
   }
 };
 
-// const webcam = config.webcam || {};
-
-// const webcam_server = new LiveCam(config);
-// webcam_server.broadcast();
 module.exports.startTranslation = (conf = {}) => {
-  const webcam_server = new LiveCam({ config, ...conf });
+  const webcam_server = new LiveCam({ ...config, ...conf });
   webcam_server.broadcast();
 }
