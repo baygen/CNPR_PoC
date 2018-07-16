@@ -12,7 +12,7 @@ export default class NavigationBar extends React.Component {
 
     return (
       <div style={style.navbar}>
-        <img src={'/pics/car_plates_recognition_icon.png'} style={style.navbarPicture} />
+        <img src={'/pics/smart_boom_gate2.png'} style={style.navbarPicture} />
         <Link style={pathname === '/list' ? style.navbarLinkActive : style.navbarLink} to='/list'>White List</Link>
         <Link style={pathname === '/recognition' ? style.navbarLinkActive : style.navbarLink} to='/recognition'>Recognition</Link>
         <Link style={pathname === '/log' ? style.navbarLinkActive : style.navbarLink} to='/log'>Log's</Link>

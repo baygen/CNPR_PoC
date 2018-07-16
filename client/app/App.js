@@ -118,11 +118,11 @@ export default class Main extends React.Component {
           <img
             src={'/pics/VER2-BLUE.png'}
             style={{
-              maxWidth: '50%',
+              maxWidth: '20%',
+              marginLeft: '40%',
               alignSelf: 'center'
             }}
-            onClick={() => { }}
-            onBlur={() => console.log('blur')} />
+             />
         </a>
       </div>
     )

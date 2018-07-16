@@ -78,7 +78,7 @@ export default {
     display: 'flex',
     backgroundColor: '#0B314F',
     flexDirection: 'row', alignContent: 'center', flex: 1, justifyContent: 'space-around',
-    height: 75,
+    height: 90,
     fontFamily: 'Roboto',
     alignItems: 'center',
     fontSize: 20
