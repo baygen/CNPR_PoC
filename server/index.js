@@ -94,7 +94,6 @@ app.delete('/plates/:number', (req, res) => {
 })
 
 app.get('*', (req, res) => {
-  console.log('app.get("*")')
   res.sendFile(path.join(__dirname, '../dist/index.html'))
 });
 
