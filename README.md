@@ -18,3 +18,6 @@
     - EA7TH6     confidence: 76.6153
     - EA7TH      confidence: 75.2232
     - EA7TBB     confidence: 68.2095
+
+2. Run server :
+  npm run start
